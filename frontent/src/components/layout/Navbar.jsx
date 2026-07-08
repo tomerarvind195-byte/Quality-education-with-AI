@@ -1,0 +1,27 @@
+import { useState } from "react";
+import {link, NavLink} form "react-router-dom";
+
+const Navbar = () => {
+   const  [ menuOpen , setMenuOpem  ]  = useState(false)
+   return (
+    <nav className ="navbar">
+      <Link to ="/" className ="navbar-logo">
+          <span> SkillPath <span className ="grafient-text">AI</span></span>
+      </Link>
+      <div className={`navbar-link $(menuOpen ? 'active' : "}`}>
+        <NavLink to  = "/" className={({isActive}) => isActive ? 'navbar-link active' :'nav-link'}>Home</NavLink>
+        <NavLink to = "/about" className ={({isActive}) => isActive ? 'navbar-link active' : 'nav-link'}>About</NavLink>
+
+        <link to ="/login" className ="nav-btn-login" >Login</link>
+        <link to ="/register" className ="nav-btn-register" >register</link>
+      </div>
+      <button className ="navbar-humburger" onClink={() => setMenuOpem (!menuOpen)}>{menuOpen ? 'X' :'E'}
+      </button>
+
+    </nav>
+
+   )
+}
+
+
+export default Navbar;
