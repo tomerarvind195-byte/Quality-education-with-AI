@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {link, NavLink} form "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 const Navbar = () => {
    const  [ menuOpen , setMenuOpem  ]  = useState(false)
