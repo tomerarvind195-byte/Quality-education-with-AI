@@ -12,8 +12,8 @@ const Navbar = () => {
         <NavLink to  = "/" className={({isActive}) => isActive ? 'navbar-link active' :'nav-link'}>Home</NavLink>
         <NavLink to = "/about" className ={({isActive}) => isActive ? 'navbar-link active' : 'nav-link'}>About</NavLink>
 
-        <link to ="/login" className ="nav-btn-login" >Login</link>
-        <link to ="/register" className ="nav-btn-register" >register</link>
+        <Link to ="/login" className ="nav-btn-login" >Login</Link>
+        <Link to ="/register" className ="nav-btn-register" >register</Link>
       </div>
       <button className ="navbar-humburger" onClink={() => setMenuOpem (!menuOpen)}>{menuOpen ? 'X' :'E'}
       </button>

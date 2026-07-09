@@ -5,7 +5,7 @@ const roadmapStepSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true },
   duration: { type: String, required: true }, // e.g. "2 weeks"
-  resources: [String] // Optional keywords or links
+  resources: [String] // Optional keywords or Links
 });
 
 const roadmapSchema = new mongoose.Schema(
