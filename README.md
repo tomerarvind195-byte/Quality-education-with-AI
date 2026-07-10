@@ -22,7 +22,7 @@
 
 ## 📸 Screenshots
 
-> _(Screenshots yahan add karo — Home, Recommendations, Course Detail page)_
+
 
 | Home Page | Course Recommendations | Resource Detail |
 |-----------|----------------------|----------------|
