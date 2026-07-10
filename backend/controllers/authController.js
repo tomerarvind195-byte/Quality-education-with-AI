@@ -6,49 +6,63 @@ import { isValidEmail, isValidPassword } from '../utils/validators.js';
 // @route   POST /api/auth/register
 // @access  Public
 export const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
+  try {
+    const { name, email, password } = req.body;
 
-  if (!name || !email || !password) {
-    res.status(400);
-    throw new Error('Please add all fields');
-  }
+    console.log("Register Request:", req.body);
 
-  if (!isValidEmail(email)) {
-    res.status(400);
-    throw new Error('Invalid email format');
-  }
+    if (!name || !email || !password) {
+      return res.status(400).json({
+        message: 'Please add all fields'
+      });
+    }
 
-  if (!isValidPassword(password)) {
-    res.status(400);
-    throw new Error('Password must be at least 6 characters');
-  }
+    if (!isValidEmail(email)) {
+      return res.status(400).json({
+        message: 'Invalid email format'
+      });
+    }
 
-  const userExists = await User.findOne({ email });
+    if (!isValidPassword(password)) {
+      return res.status(400).json({
+        message: 'Password must be at least 6 characters'
+      });
+    }
 
-  if (userExists) {
-    res.status(400);
-    throw new Error('User already exists');
-  }
+    const userExists = await User.findOne({ email });
 
-  const user = await User.create({
-    name,
-    email,
-    password
-  });
+    if (userExists) {
+      return res.status(400).json({
+        message: 'User already exists'
+      });
+    }
 
-  if (user) {
+    const user = await User.create({
+      name,
+      email,
+      password,
+    });
+
     generateToken(res, user._id);
-    res.status(201).json({
+
+    return res.status(201).json({
+      success: true,
       user: {
         _id: user._id,
         name: user.name,
         email: user.email,
-        role: user.role
-      }
+        role: user.role,
+      },
     });
-  } else {
-    res.status(400);
-    throw new Error('Invalid user data');
+
+  } catch (err) {
+    console.error("REGISTER ERROR:", err);
+
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+      stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+    });
   }
 };
 
@@ -56,53 +70,73 @@ export const registerUser = async (req, res) => {
 // @route   POST /api/auth/login
 // @access  Public
 export const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  try {
+    const { email, password } = req.body;
 
-  const user = await User.findOne({ email });
+    const user = await User.findOne({ email });
 
-  if (user && !user.isActive) {
-    res.status(401);
-    throw new Error('Your account has been disabled by an admin');
-  }
+    if (user && !user.isActive) {
+      return res.status(401).json({
+        message: 'Your account has been disabled by an admin'
+      });
+    }
 
-  if (user && (await user.matchPassword(password))) {
-    generateToken(res, user._id);
-    res.json({
-      user: {
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role
-      }
+    if (user && (await user.matchPassword(password))) {
+      generateToken(res, user._id);
+
+      return res.json({
+        success: true,
+        user: {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        },
+      });
+    }
+
+    return res.status(401).json({
+      message: 'Invalid email or password'
     });
-  } else {
-    res.status(401);
-    throw new Error('Invalid email or password');
+
+  } catch (err) {
+    console.error("LOGIN ERROR:", err);
+
+    return res.status(500).json({
+      success: false,
+      message: err.message,
+    });
   }
 };
 
-// @desc    Logout user / clear cookie
-// @route   POST /api/auth/logout
-// @access  Public
+// @desc    Logout user
 export const logoutUser = (req, res) => {
   res.cookie('jwt', '', {
     httpOnly: true,
-    expires: new Date(0)
+    expires: new Date(0),
   });
-  res.status(200).json({ message: 'Logged out successfully' });
+
+  res.status(200).json({
+    message: 'Logged out successfully',
+  });
 };
 
-// @desc    Get current logged in user
-// @route   GET /api/auth/me
-// @access  Private
+// @desc    Get current user
 export const getMe = async (req, res) => {
-  // req.user is set by the protect middleware
-  res.status(200).json({
-    user: {
-      _id: req.user._id,
-      name: req.user.name,
-      email: req.user.email,
-      role: req.user.role
-    }
-  });
+  try {
+    res.status(200).json({
+      user: {
+        _id: req.user._id,
+        name: req.user.name,
+        email: req.user.email,
+        role: req.user.role,
+      },
+    });
+  } catch (err) {
+    console.error("GET ME ERROR:", err);
+
+    res.status(500).json({
+      message: err.message,
+    });
+  }
 };
