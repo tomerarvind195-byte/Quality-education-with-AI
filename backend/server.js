@@ -31,25 +31,17 @@ const app = express();
 // Security Middleware
 app.use(helmet());
 
-const clientUrl = process.env.CLIENT_URL;
-
-const allowedOrigins = [
-  'http://localhost:5173',
-  clientUrl,
-  clientUrl ? clientUrl.replace(/\/$/, '') : null,
-].filter(Boolean);
-
+// ================= CORS =================
 app.use(
   cors({
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-      callback(new Error('Not allowed by CORS'));
-    },
+    origin: 'https://qualityeducationwithai.vercel.app',
     credentials: true,
   })
 );
+
+// Handle preflight requests
+app.options('*', cors());
+// ========================================
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
