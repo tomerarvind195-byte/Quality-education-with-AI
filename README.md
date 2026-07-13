@@ -37,12 +37,12 @@
 **Inspired by:** The UN Sustainable Development Goal 4 — *Quality Education for All* — and platforms like Khan Academy, Coursera, and edX.
 
 **Key Highlights:**
-- AI-driven course and resource recommendation engine
-- Full-stack architecture — React frontend + Node.js/Express backend
-- Already live and deployed on Vercel
-- Clean, modern UI with responsive design
-- REST API backend serving personalized recommendations
-- 28 commits — actively developed and maintained
+- AI-driven course and resource recommendation engine.
+- Full-stack architecture — React frontend + Node.js/Express backend.
+- Already live and deployed on Vercel.
+- Clean, modern UI with responsive design.
+- REST API backend serving personalized recommendations.
+- 28 commits — actively developed and maintained.
 
 ---
 
