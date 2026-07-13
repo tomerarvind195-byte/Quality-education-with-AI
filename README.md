@@ -32,7 +32,7 @@
 
 ## 📋 About The Project
 
-**Quality Education with AI** is a full-stack, AI-powered education platform designed to bridge the gap between learners and quality learning resources. The platform intelligently recommends the most relevant courses and resources based on a user's learning goals, interests, and current skill level — making quality education accessible to everyone.
+**Quality Education with AI** is a full-stack, AI-powered education platform designed to bridge the gap between learners and quality learning resources. The platform intelligently recommends the most relevant courses and resources based on a user's learning goals, interests, and current skill level — making quality education accessible to everyone without fee.
 
 **Inspired by:** The UN Sustainable Development Goal 4 — *Quality Education for All* — and platforms like Khan Academy, Coursera, and edX.
 
