@@ -24,12 +24,16 @@
 
 
 
-| Home Page | Course Recommendations | Resource Detail |
-|-----------|----------------------|----------------|
-| ![Home]<img width="1763" height="3801" alt="image" src="https://github.com/user-attachments/assets/26f2ce68-39da-4f7d-8e7c-9fbb981838d3" />
- | ![Recommendations]<img width="1763" height="2140" alt="image" src="https://github.com/user-attachments/assets/dec9b8e4-ef48-426b-b346-ce04fd5a1d50" />
- | ![Detail]<img width="1763" height="1356" alt="image" src="https://github.com/user-attachments/assets/de5abc87-cd3f-4cb2-981f-8d82bbe647d0" />
- |
+## 📸 Screenshots
+
+### 🏠 Home Page
+<img src="https://github.com/user-attachments/assets/26f2ce68-39da-4f7d-8e7c-9fbb981838d3" width="800"/>
+
+### 🎯 Course Recommendations
+<img src="https://github.com/user-attachments/assets/dec9b8e4-ef48-426b-b346-ce04fd5a1d50" width="800"/>
+
+### 📚 Resource Detail
+<img src="https://github.com/user-attachments/assets/de5abc87-cd3f-4cb2-981f-8d82bbe647d0" width="800"/>
 
 ---
 
