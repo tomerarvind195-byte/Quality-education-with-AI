@@ -27,7 +27,8 @@
 | Home Page | Course Recommendations | Resource Detail |
 |-----------|----------------------|----------------|
 | ![Home]<img width="1763" height="3801" alt="image" src="https://github.com/user-attachments/assets/26f2ce68-39da-4f7d-8e7c-9fbb981838d3" />
- | ![Recommendations](screenshots/recommendations.png) | ![Detail](screenshots/detail.png) |
+ | ![Recommendations]<img width="1763" height="2140" alt="image" src="https://github.com/user-attachments/assets/dec9b8e4-ef48-426b-b346-ce04fd5a1d50" />
+ | ![Detail](screenshots/detail.png) |
 
 ---
 
